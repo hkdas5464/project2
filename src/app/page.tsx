@@ -47,17 +47,17 @@ export default function Home() {
             <h1 className="text-2xl font-semibold">Good Morning, ABCE KUMAR</h1>
           
           </div>
-          <p className="text-gray-500 dark:text-gray-400">It's 5th Saturday 2024</p>
+          <p className="text-gray-500 dark:text-gray-400">Its 5th Saturday 2024</p>
           <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 mt-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="col-span-2">
                 <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg mb-4">
                   <h2 className="text-lg font-semibold mb-2">Awaiting Your Action</h2>
-                  <p className="text-gray-500 dark:text-gray-400">You're all caught up on your tasks</p>
+                  <p className="text-gray-500 dark:text-gray-400">You are all caught up on your tasks</p>
                 </div>
                 <div className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
                   <h2 className="text-lg font-semibold mb-2">Timely Suggestions</h2>
-                  <p className="text-gray-500 dark:text-gray-400">Here you'll get updates on your article items</p>
+                  <p className="text-gray-500 dark:text-gray-400">Here you ll get updates on your article items</p>
                 </div>
               </div>
               <div>
