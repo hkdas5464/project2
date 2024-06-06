@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.3",
-    "@nextui-org/card": "^2.0.29",
+    "@nextui-org/card": "^2.0.30",
     "@nextui-org/checkbox": "^2.0.29",
     "@nextui-org/navbar": "^2.0.30",
     "@nextui-org/react": "^2.3.5",

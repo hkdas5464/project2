@@ -1,6 +1,21 @@
 'use client'
 import React from "react";
 import IconMenu from './icons/MenueIcon.jsx'
+import { animals } from "./data.js";
+import { ItemCounter } from './icons/ItemCounter.jsx'
+import { IconWrapper } from './icons/IconWrapper.jsx'
+import { BugIcon } from './icons/BugIcon.jsx';
+import { PlayCircleIcon } from './icons/PlayCircleIcon.jsx';
+import { PullRequestIcon } from './icons/PullRequestIcon.jsx';
+import { LayoutIcon } from './icons/LayoutIcon';
+import { UsersIcon } from './icons/UsersIcon';
+import { TagIcon } from './icons/TagIcon';
+import { WatchersIcon } from './icons/WatchersIcon.jsx';
+import { ChatIcon } from './icons/ChatIcon.jsx';
+import { BookIcon } from './icons/BookIcon.jsx'
+import { ScrollShadow } from "@nextui-org/react";
+
+
 import {
   Navbar,
   NavbarBrand,
@@ -19,6 +34,10 @@ import {
   Tab,
   Card,
   CardBody,
+  Input,
+  SelectItem,
+  Listbox,
+  ListboxItem,
 } from "@nextui-org/react";
 // import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
 // import {AcmeLogo} from "./AcmeLogo.jsx";
@@ -29,6 +48,7 @@ import {
 
 export default function MyNavbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [selected, setSelected] = React.useState<React.Key>("login");
 
   const [darkMode, setDarkMode] = React.useState(false);
 
@@ -68,47 +88,283 @@ export default function MyNavbar() {
 
 
   return (
-    <Navbar  
-    isBordered
-    isMenuOpen={isMenuOpen}
-    className="fixed"
-    onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      isBordered
+      isMenuOpen={isMenuOpen}
+      className="fixed"
+      onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-      <Dropdown backdrop="blur">
-            <DropdownTrigger>
-              <Button
-                variant="light"
-              >
-                <IconMenu />
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label="Multiple selection example"
-              variant="flat"
-              closeOnSelect={false}
-              disallowEmptySelection
-              selectionMode="multiple">
+        <Dropdown backdrop="blur">
+          <DropdownTrigger>
+            <Button
+              variant="light"
+            >
+              <IconMenu />
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu
+            aria-label="Multiple selection example"
+            variant="flat"
+            closeOnSelect={false}
+            disallowEmptySelection
+          >
 
-              <DropdownItem key="new"  >
-                <Tabs aria-label="Options" variant="underlined" color="primary" disableAnimation={false} >
-                  <Tab key="photos" title="App">
-                    <Card>
-                      <CardBody className="dark:text-red-700 w-80" >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      </CardBody>
-                    </Card>
-                  </Tab>
-                  <Tab key="music" title="Shortcut" >
-                    <Card>
-                      <CardBody className=" w-80">
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                      </CardBody>
-                    </Card>
-                  </Tab>
-                </Tabs>
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+            <DropdownItem key="new"  >
+              <Card className="max-w-full w-[340px] h-[400px]">
+                <CardBody className="overflow-hidden">
+                  <Tabs
+                    key="data"
+                    fullWidth
+                    size="md"
+                    aria-label="Tabs form"
+                    onSelectionChange={setSelected}
+                  >
+                    <Tab key="login" title="App">
+                      <ScrollShadow
+                        hideScrollBar
+                        offset={100}
+                        orientation="horizontal"
+                        className="max-w-[400px] max-h-[300px]"
+                      >
+                        <Listbox
+                          aria-label="User Menu"
+                          onAction={(key) => alert(key)}
+                          className="p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1  overflow-visible shadow-small rounded-medium"
+                          itemClasses={{
+                            base: "px-3 first:rounded-t-medium last:rounded-b-medium rounded-none gap-3 h-12 data-[hover=true]:bg-default-100/80",
+                          }}
+                        >
+                          <ListboxItem
+                            key="issues"
+                            endContent={<ItemCounter number={13} />}
+                            startContent={
+                              <IconWrapper className="bg-success/10 text-success">
+                                <BugIcon className="text-lg " />
+                              </IconWrapper>
+                            }
+                          >
+                            Jobs Hub
+                          </ListboxItem>
+                          <ListboxItem
+                            key="pull_requests"
+                            endContent={<ItemCounter number={6} />}
+                            startContent={
+                              <IconWrapper className="bg-primary/10 text-primary">
+                                <PullRequestIcon className="text-lg " />
+                              </IconWrapper>
+                            }
+                          >
+                            Request Refrence Letter
+                          </ListboxItem>
+                          <ListboxItem
+                            key="discussions"
+                            endContent={<ItemCounter number={293} />}
+                            startContent={
+                              <IconWrapper className="bg-secondary/10 text-secondary">
+                                <ChatIcon className="text-lg " />
+                              </IconWrapper>
+                            }
+                          >
+                            Personal Informations
+                          </ListboxItem>
+                          <ListboxItem
+                            key="actions"
+                            endContent={<ItemCounter number={2} />}
+                            startContent={
+                              <IconWrapper className="bg-warning/10 text-warning">
+                                <PlayCircleIcon className="text-lg " />
+                              </IconWrapper>
+                            }
+                          >
+                            Pay
+                          </ListboxItem>
+                          <ListboxItem
+                            key="projects"
+                            endContent={<ItemCounter number={4} />}
+                            startContent={
+                              <IconWrapper className="bg-default/50 text-foreground">
+                                <LayoutIcon className="text-lg " />
+                              </IconWrapper>
+                            }
+                          >
+                            Learning
+                          </ListboxItem>
+                          <ListboxItem
+                            key="releases"
+                            className="group h-auto py-3"
+                            endContent={<ItemCounter number={399} />}
+                            startContent={
+                              <IconWrapper className="bg-primary/10 text-primary">
+                                <TagIcon className="text-lg" />
+                              </IconWrapper>
+                            }
+                            textValue="Releases"
+                          >
+                            Favorites
+                          </ListboxItem>
+                          <ListboxItem
+                            key="contributors"
+                            endContent={<ItemCounter number={79} />}
+                            startContent={
+                              <IconWrapper className="bg-warning/10 text-warning">
+                                <UsersIcon />
+                              </IconWrapper>
+                            }
+                          >
+                            My Account
+                          </ListboxItem>
+                          <ListboxItem
+                            key="watchers"
+                            endContent={<ItemCounter number={82} />}
+                            startContent={
+                              <IconWrapper className="bg-default/50 text-foreground">
+                                <WatchersIcon />
+                              </IconWrapper>
+                            }
+                          >
+                            Favorites
+                          </ListboxItem>
+                          <ListboxItem
+                            key="license"
+                            endContent={<span className="text-small text-default-400">MIT</span>}
+                            startContent={
+                              <IconWrapper className="bg-danger/10 text-danger dark:text-danger-500">
+                                <BookIcon />
+                              </IconWrapper>
+                            }
+                          >
+                            Absence
+                          </ListboxItem>
+                        </Listbox>
+                      </ScrollShadow>
+                    </Tab>
+                    <Tab key="sign-up" title="Shortcut">
+                      <Listbox
+                        aria-label="User Menu"
+                        onAction={(key) => alert(key)}
+                        className="p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 bg-content1 max-w-[300px] overflow-visible shadow-small rounded-medium"
+                        itemClasses={{
+                          base: "px-3 first:rounded-t-medium last:rounded-b-medium rounded-none gap-3 h-12 data-[hover=true]:bg-default-100/80",
+                        }}
+                      >
+                        <ListboxItem
+                          key="issues"
+                          endContent={<ItemCounter number={13} />}
+                          startContent={
+                            <IconWrapper className="bg-success/10 text-success">
+                              <BugIcon className="text-lg " />
+                            </IconWrapper>
+                          }
+                        >
+                          Issues
+                        </ListboxItem>
+                        <ListboxItem
+                          key="pull_requests"
+                          endContent={<ItemCounter number={6} />}
+                          startContent={
+                            <IconWrapper className="bg-primary/10 text-primary">
+                              <PullRequestIcon className="text-lg " />
+                            </IconWrapper>
+                          }
+                        >
+                          Pull Requests
+                        </ListboxItem>
+                        <ListboxItem
+                          key="discussions"
+                          endContent={<ItemCounter number={293} />}
+                          startContent={
+                            <IconWrapper className="bg-secondary/10 text-secondary">
+                              <ChatIcon className="text-lg " />
+                            </IconWrapper>
+                          }
+                        >
+                          Discussions
+                        </ListboxItem>
+                        <ListboxItem
+                          key="actions"
+                          endContent={<ItemCounter number={2} />}
+                          startContent={
+                            <IconWrapper className="bg-warning/10 text-warning">
+                              <PlayCircleIcon className="text-lg " />
+                            </IconWrapper>
+                          }
+                        >
+                          Actions
+                        </ListboxItem>
+                        <ListboxItem
+                          key="projects"
+                          endContent={<ItemCounter number={4} />}
+                          startContent={
+                            <IconWrapper className="bg-default/50 text-foreground">
+                              <LayoutIcon className="text-lg " />
+                            </IconWrapper>
+                          }
+                        >
+                          Projects
+                        </ListboxItem>
+                        <ListboxItem
+                          key="releases"
+                          className="group h-auto py-3"
+                          endContent={<ItemCounter number={399} />}
+                          startContent={
+                            <IconWrapper className="bg-primary/10 text-primary">
+                              <TagIcon className="text-lg" />
+                            </IconWrapper>
+                          }
+                          textValue="Releases"
+                        >
+                          <div className="flex flex-col gap-1">
+                            <span>Releases</span>
+                            <div className="px-2 py-1 rounded-small bg-default-100 group-data-[hover=true]:bg-default-200">
+                              <span className="text-tiny text-default-600">@nextui-org/react@2.0.10</span>
+                              <div className="flex gap-2 text-tiny">
+                                <span className="text-default-500">49 minutes ago</span>
+                                <span className="text-success">Latest</span>
+                              </div>
+                            </div>
+                          </div>
+                        </ListboxItem>
+                        <ListboxItem
+                          key="contributors"
+                          endContent={<ItemCounter number={79} />}
+                          startContent={
+                            <IconWrapper className="bg-warning/10 text-warning">
+                              <UsersIcon />
+                            </IconWrapper>
+                          }
+                        >
+                          Contributors
+                        </ListboxItem>
+                        <ListboxItem
+                          key="watchers"
+                          endContent={<ItemCounter number={82} />}
+                          startContent={
+                            <IconWrapper className="bg-default/50 text-foreground">
+                              <WatchersIcon />
+                            </IconWrapper>
+                          }
+                        >
+                          Watchers
+                        </ListboxItem>
+                        <ListboxItem
+                          key="license"
+                          endContent={<span className="text-small text-default-400">MIT</span>}
+                          startContent={
+                            <IconWrapper className="bg-danger/10 text-danger dark:text-danger-500">
+                              <BookIcon />
+                            </IconWrapper>
+                          }
+                        >
+                          License
+                        </ListboxItem>
+                      </Listbox>
+                    </Tab>
+                  </Tabs>
+                </CardBody>
+              </Card>
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
         <NavbarItem isActive>
 
         </NavbarItem>
@@ -142,35 +398,36 @@ export default function MyNavbar() {
         </NavbarMenu>
 
         <Dropdown placement="bottom-end">
-            <DropdownTrigger>
-              <Avatar
-                isBordered
-                as="button"
-                className="transition-transform"
-                color="primary"
-                name="nobita"
-                size="sm"
-                src="https://i.pinimg.com/736x/bf/eb/a8/bfeba832a872fef7b0426e3c314041d9.jpg"
-              />
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Profile Actions" variant="flat">
-              <DropdownItem key="profile" className="h-14 gap-2">
-                <p className="font-semibold">Signed in as</p>
-                <p className="font-semibold">zoey@example.com</p>
-              </DropdownItem>
-              <DropdownItem key="settings">My Settings</DropdownItem>
-              <DropdownItem key="team_settings">Team Settings</DropdownItem>
-              <DropdownItem key="analytics">Analytics</DropdownItem>
-              <DropdownItem key="system">System</DropdownItem>
-              <DropdownItem key="configurations">Configurations</DropdownItem>
-              <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-              <DropdownItem key="logout" color="danger">
-                Log Out
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <DropdownTrigger>
+            <Avatar
+              isBordered
+              as="button"
+              className="transition-transform"
+              color="primary"
+              name="nobita"
+              size="sm"
+              src="https://i.pinimg.com/736x/bf/eb/a8/bfeba832a872fef7b0426e3c314041d9.jpg"
+            />
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Profile Actions" variant="flat">
+            <DropdownItem key="profile" className="h-14 gap-2">
+              <p className="font-semibold">Signed in as</p>
+              <p className="font-semibold">zoey@example.com</p>
+            </DropdownItem>
+            <DropdownItem key="settings">My Settings</DropdownItem>
+            <DropdownItem key="team_settings">Team Settings</DropdownItem>
+            <DropdownItem key="analytics">Analytics</DropdownItem>
+            <DropdownItem key="system">System</DropdownItem>
+            <DropdownItem key="configurations">Configurations</DropdownItem>
+            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+            <DropdownItem key="logout" color="danger">
+              Log Out
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
 
       </NavbarContent>
+
     </Navbar>
   );
 }
