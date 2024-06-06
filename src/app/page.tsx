@@ -39,7 +39,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-20">
+    <main className="flex min-h-screen flex-col items-center justify-between p-10">
       <Spotlight />
       {/* <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen p-4 rounded"> */}
         <div className="container mx-auto mt-10">
