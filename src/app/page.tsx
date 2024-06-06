@@ -73,7 +73,7 @@ export default function Home() {
               <h2 className="text-xl font-semibold mb-4">Recommended To You</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-4">
-                  <img
+                  <Image
                     src="https://via.placeholder.com/150"
                     alt="Image 1"
                     className="w-full h-32 object-cover rounded-md mb-4"
@@ -83,7 +83,7 @@ export default function Home() {
                   <a href="#" className="text-blue-500 dark:text-blue-300">View Org Cart</a>
                 </div>
                 <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-4">
-                  <img
+                  <Image
                     src="https://via.placeholder.com/150"
                     alt="Image 2"
                     className="w-full h-32 object-cover rounded-md mb-4"
