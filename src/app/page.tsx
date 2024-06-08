@@ -15,6 +15,7 @@ import { AllInOneIcon } from './icons/AllInOneIcon';
 import {getCurrentDate} from '../utils/dateUtils';
 import { IconWrapper } from './icons/IconWrapper';
 import { BugIcon } from './icons/BugIcon';
+import Footer from './pages/Footer';
 
 export default function Home() {
 
@@ -46,6 +47,7 @@ export default function Home() {
   };
 
   return (
+    <>
     <main className="flex min-h-screen flex-col items-center justify-between p-10">
       <Spotlight />
       {/* <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen p-4 rounded"> */}
@@ -112,6 +114,9 @@ export default function Home() {
           </div>
         </div>
       {/* </div> */}
+     
     </main>
+    <Footer/>
+    </>
   );
 }
