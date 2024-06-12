@@ -13,6 +13,7 @@ import { TagIcon } from "./icons/TagIcon";
 import { WatchersIcon } from "./icons/WatchersIcon.jsx";
 import { ChatIcon } from "./icons/ChatIcon.jsx";
 import { BookIcon } from "./icons/BookIcon.jsx";
+import {LogoutIcon} from './icons/LogoutIcon.jsx'
 import { LinkIcon, ListboxSection, ScrollShadow, cn } from "@nextui-org/react";
 
 import {Popover, PopoverTrigger, PopoverContent} from "@nextui-org/react"
@@ -452,19 +453,35 @@ export default function MyNavbar() {
       </PopoverContent>
     </Popover>
 
-          <Dropdown backdrop="blur">
-            <DropdownTrigger>
-              <Button isIconOnly  variant="light">
-                <Icon093Drawer />
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label="Multiple selection example"
-              variant="flat"
-              closeOnSelect={false}
-              disallowEmptySelection
-            >
-              <DropdownItem key="new">
+          
+        </div>
+        <Dropdown backdrop="blur" >
+          <DropdownTrigger>
+            <Avatar
+              isBordered
+              as="button"
+              className="transition-transform"
+              color="primary"
+              name="nobita"
+              size="sm"
+              src="https://i.pinimg.com/736x/bf/eb/a8/bfeba832a872fef7b0426e3c314041d9.jpg"
+            />
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Profile Actions" variant="flat">
+            <DropdownItem key="profile" className="h-14 gap-2">
+              <p className="font-semibold">Signed in as</p>
+              <p className="font-semibold">zoey@example.com</p>
+            </DropdownItem>
+            {/* <DropdownItem key="settings">My Settings</DropdownItem>
+            <DropdownItem key="team_settings">Team Settings</DropdownItem>
+            <DropdownItem key="analytics">Analytics</DropdownItem>
+            <DropdownItem key="system">System</DropdownItem>
+            <DropdownItem key="configurations">Configurations</DropdownItem>
+            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+            <DropdownItem key="logout" color="danger">
+              Log Out
+            </DropdownItem> */}
+            <DropdownItem key="new">
                 <Card className=" w-auto h-auto">
                   <div className="w-80 p-4 bg-white dark:bg-black shadow-lg rounded-lg">
                     <div className="flex flex-col items-center">
@@ -555,40 +572,25 @@ export default function MyNavbar() {
                         >
                           Help
                         </ListboxItem>
+
+                        <ListboxItem
+                        className="bg-red-600"
+                          key="watchers"
+                          endContent={<ItemCounter number={82} />}
+                          startContent={
+                            <IconWrapper className="bg-default/50 text-foreground">
+                              <LogoutIcon />
+                            </IconWrapper>
+                          }
+                          color="danger"
+                        >
+                          Log Out
+                        </ListboxItem>
                       </Listbox>
                     </ScrollShadow>
                   </div>
                 </Card>
               </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </div>
-        <Dropdown placement="bottom-end">
-          <DropdownTrigger>
-            <Avatar
-              isBordered
-              as="button"
-              className="transition-transform"
-              color="primary"
-              name="nobita"
-              size="sm"
-              src="https://i.pinimg.com/736x/bf/eb/a8/bfeba832a872fef7b0426e3c314041d9.jpg"
-            />
-          </DropdownTrigger>
-          <DropdownMenu aria-label="Profile Actions" variant="flat">
-            <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
-            </DropdownItem>
-            <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
-            <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem key="logout" color="danger">
-              Log Out
-            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </NavbarContent>
